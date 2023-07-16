@@ -8,8 +8,6 @@ spring:
       server:
         git:
           uri: https://github.com/codesnaper/sample-microservice
-#          The configuration server?s validation of the Git server?s SSL certificate can be disabled
-          skipSslValidation: true
-          timeout: 4
-          search-paths:
-            - /{branch}/config-file
+##          The configuration server?s validation of the Git server?s SSL certificate can be disabled
+#          skipSslValidation: true
+#          timeout: 4
