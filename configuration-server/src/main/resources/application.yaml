@@ -12,4 +12,4 @@ spring:
           skipSslValidation: true
           timeout: 4
           search-paths:
-            - config-file
+            - /{branch}/config-file
