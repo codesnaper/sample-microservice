@@ -1,6 +1,12 @@
 server:
   port: 9100
+encypt:
+  key: sdshvur3hy843rehvurebfugh38re
 spring:
+  security:
+    user:
+      name: root
+      password: root
   application:
     name: config-server
   cloud:
@@ -13,6 +19,6 @@ spring:
           timeout: 4
 #          It tell to look on git search url in to pick property too
           search-paths:
-            - warehouse-config*
-            - order-config*
-            - merchant-config*
+            - config/merchant*
+            - config/order*
+            - config/warehouse*

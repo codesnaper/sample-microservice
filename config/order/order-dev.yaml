@@ -1,1 +1,4 @@
-spring.application.name=warehouse
+order:
+  name: order-service
+  retry:
+    count: 3
