@@ -9,9 +9,10 @@ spring:
         git:
           uri: https://github.com/codesnaper/sample-microservice
 ##          The configuration server?s validation of the Git server?s SSL certificate can be disabled
-#          skipSslValidation: true
-#          timeout: 4
+          skipSslValidation: true
+          timeout: 4
 #          It tell to look on git search url in to pick property too
           search-paths:
-            - config/warehouse-config*
-            - config/order-config*
+            - warehouse-config*
+            - order-config*
+            - merchant-config*
