@@ -11,5 +11,7 @@ spring:
 ##          The configuration server?s validation of the Git server?s SSL certificate can be disabled
 #          skipSslValidation: true
 #          timeout: 4
+#          It tell to look on git search url in to pick property too
           search-paths:
-            - warehouse-config*
+            - config/warehouse-config*
+            - config/order-config*
