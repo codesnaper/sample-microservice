@@ -5,7 +5,7 @@ product:
 spring:
   cloud:
     function:
-      defination: getAllProduct
+      defination: getAllProduct,getAllProduct1
       routing-expression: headers.x-function-route
   datasource:
     url: jdbc:h2:mem:testdb
