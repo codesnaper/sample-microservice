@@ -1,0 +1,15 @@
+server:
+  port: 9102
+spring:
+  application:
+    name: product-service
+  profiles:
+    active: dev
+  config:
+    import: optional:configserver:http://localhost:9100
+  cloud:
+    config:
+      label: main
+      name: order
+      username: root
+      password: root

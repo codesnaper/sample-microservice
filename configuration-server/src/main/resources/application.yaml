@@ -2,6 +2,11 @@ server:
   port: 9100
 encypt:
   key: sdshvur3hy843rehvurebfugh38re
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
 spring:
   security:
     user:
@@ -21,4 +26,4 @@ spring:
           search-paths:
             - config/merchant*
             - config/order*
-            - config/warehouse*
+            - config/product*
