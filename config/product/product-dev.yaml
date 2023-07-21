@@ -5,8 +5,8 @@ product:
 spring:
   cloud:
     function:
-      defination: getAllProduct,getAllProduct1
-      routing-expression: headers.x-function-route
+      defination: getAllProduct
+      ineligible-definitions: getAllProduct1
   datasource:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver

@@ -1,0 +1,23 @@
+server:
+  port: 9800
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8080/realms/sample-microservice
+        registration:
+          keycloak:
+            redirect-uri: http://localhost:9800/login/oauth2/code/sample
+            client-id: sample
+            provider: keycloak
+            scope: openid
+            client-secret: jiP8XWowiqAnRsAS7pxIQsifTzC8ESIV
+            authorization-grant-type: authorization_code
+logging:
+  level:
+    root: INFO
+    org:
+      springframework:
+        security: TRACE

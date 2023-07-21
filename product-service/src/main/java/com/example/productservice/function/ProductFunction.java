@@ -1,4 +1,4 @@
-package com.example.productservice.processor;
+package com.example.productservice.function;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.messaging.Message;
@@ -12,20 +12,19 @@ import java.util.function.Supplier;
 
 @Component
 public class ProductFunction {
-
     @Bean
-    public Supplier<Message<String>> getAllProduct(){
+    public Supplier<Message<String>> getAllProduct() {
         Map<String, Object> map = new HashMap<>();
-        map.put("s2","s2");
+        map.put("s2", "s2");
         MessageHeaders messageHeaders = new MessageHeaders(map);
         return () -> MessageBuilder.createMessage("sample", messageHeaders);
 
     }
 
     @Bean
-    public Supplier<Message<String>> getAllProduct1(){
+    public Supplier<Message<String>> getAllProduct1() {
         Map<String, Object> map = new HashMap<>();
-        map.put("s2","s2");
+        map.put("s2", "s2");
         MessageHeaders messageHeaders = new MessageHeaders(map);
         return () -> MessageBuilder.createMessage("p1", messageHeaders);
 

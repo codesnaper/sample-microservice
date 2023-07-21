@@ -1,12 +1,12 @@
 spring:
   application:
-    name: discover-server
+    name: auth-client
   profiles:
     active: dev
   config:
     import: optional:configserver:http://localhost:9100
     config:
       label: main
-      name: discoveryserver
+      name: authclient
       username: root
       password: root

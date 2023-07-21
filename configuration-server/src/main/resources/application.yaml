@@ -27,3 +27,5 @@ spring:
             - config/merchant*
             - config/order*
             - config/product*
+            - config/authClient*
+            - config/discoveryserver*
