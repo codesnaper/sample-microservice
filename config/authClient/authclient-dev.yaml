@@ -10,9 +10,9 @@ spring:
             redirect-uri: ${KEYCLOAK_REDIRECT_URI}
             client-id: ${KEYCLOAK_CLIENT_ID}
             provider: keycloak
-            scope: openid
+            scope: {cipher}AQBc3O+kFC7pCsaC/H5YDPjP29/LLP6VM3B9ACXNx7hOk3oj4YcLJM1epbTgR9kqqsBiPnqYib1ktRMEpSosqr5snmerQE9AaJSeKuqLB34VZwq9hhw7+tHJGhxMszQkwUf9Mxsf7YhKmH1yfMlfiybDdj1wrPLerlbyOTMX7xlDfuD+IxfNxlka/xW/OnNwQMz51CLOkic92ECoHuf1HN7XrouvCcxUzDhGYZ7R89p/XysAJHKB1FvwGlKjPIWU31hkAk/EZXc0uAk5ir9Q0asiJ3uD2hAQhhSBzsxrQLZhUHLvZ+hnQPS+T38vpcp1P9jtYQYVstYrTlCA9ysMl1xQQf6syC7+RmHYfFoBTamhPQ5PpkIyQP1VGqA8MiTlnfA=
             client-secret: ${KEYCLOAK_CLIENT_SECRET}
-            authorization-grant-type: authorization_code
+            authorization-grant-type: {cipher}AQCeZAkP8cSnORdw42OoKL8znKNsFAZdG6ejnE1nDJo7Q3VyDTMZNE7gRtHn7xnFjZruoOGZ3SLC5fMGfO2MFLAtPfZjM5bWw76IfafgqnzAX0O/knB6U8jGewtSrZpfxors09XDlr9kAPpke7ZnuXYq906aKA9hyk+vq6I0/bRyNqX/ZKuRnMsG7KJvC+qzfhid4Jm1c53+o48k/7LVDy3IGxAn2L2XE2qsTv6tMATUrZ+JswzzXwpGUbtKaCB0hqsAr0ZXQuNP9qYW4h0xE3KAf5zlLHMNscBUiN4HJNA2kLgQffOJ3EFF6nCb/rZqW1GF544Y2nNfBmRLHjauGAuKChsXf3Zn/DEke33mgAZT1PgKN8FlCTjuHF9D8GQA9SmmtALOCt5NTSH5rlVhJg5F
 logging:
   level:
     root: INFO
