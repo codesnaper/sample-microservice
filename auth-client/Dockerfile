@@ -1,0 +1,16 @@
+FROM eclipse-temurin:17-jdk-alpine
+RUN addgroup -S appgroup && adduser -S user -G appgroup
+USER user
+VOLUME /tmp
+EXPOSE 9800:9800
+ARG JAVA_OPTS=-Ddebug -Xmx128m
+ENV CONFIG_SERVER_URI=configserver:http://172.29.16.1:9100
+ENV ISSUER_URI=http://172.29.16.1:8080/realms/service1
+ENV KEYCLOAK_REDIRECT_URI=http://172.29.16.1:9800/login/oauth2/code/app
+ENV KEYCLOAK_CLIENT_ID=app
+ENV KEYCLOAK_CLIENT_SECRET=qX3mV2DfIXYRBpEcrBbp7BJqeVGNBRFg
+ENV CONFIG_USER=root
+ENV CONFIG_PASSWORD=root
+ARG JAR_FILE=target/*.jar
+COPY ${JAR_FILE} app.jar
+ENTRYPOINT ["sh", "-c", "java ${JAVA_OPTS} -jar /app.jar"]

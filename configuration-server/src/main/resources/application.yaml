@@ -1,17 +1,51 @@
 server:
-  port: 9100
-encypt:
-  key: sdshvur3hy843rehvurebfugh38re
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:jks/config-server/serverkey.p12
+    key-store-password: changeit
+    protocol: TLS
+    alias: app
+    enabled-protocols: TLSv1.2
+  port: 9445
+encrypt:
+  keyStore:
+    location: classpath:jks/encrypt/encryptkey.jks
+    password: changeit
+    alias: encryptkey
+    secret: changeit
 management:
   endpoints:
     web:
       exposure:
         include: '*'
+eureka:
+  client:
+    healthcheck:
+      enabled: true
+    tls:
+      enabled: true
+#      config server certificate
+      key-store: classpath:jks/config-server/server.truststore
+      key-store-type: JKS
+      key-store-password: changeit
+      key-password: changeit
+#      Discovery Server certificate
+      trust-store: classpath:jks/discovery-server/server.truststore
+      trust-store-type: JKS
+      trust-store-password: changeit
+    serviceUrl:
+      defaultZone: https://localhost:9448/eureka/
+  instance:
+    instanceId: ${spring.application.name}
+    hostname: config-server
+    nonSecurePortEnabled: false
+    securePortEnabled: true
 spring:
   security:
     user:
-      name: root
-      password: root
+      name: ${CONFIG_USER}
+      password: ${CONFIG_PASSWORD}
   application:
     name: config-server
   cloud:
@@ -28,4 +62,3 @@ spring:
             - config/order*
             - config/product*
             - config/authClient*
-            - config/discoveryserver*

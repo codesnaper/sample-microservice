@@ -4,9 +4,19 @@ spring:
   profiles:
     active: dev
   config:
-    import: optional:configserver:http://localhost:9100
+#    Removing the optional: prefix will cause the Config Client to fail if it is unable to connect to Config Server.
+#    import: optional:configserver:http://172.29.16.1:9100
+    import: configserver:http://172.29.16.1:9100
+#    import: ${CONFIG_SERVER_URI}
+  cloud:
     config:
-      label: main
+#      IF below not provided take default spring.application.name
       name: authclient
-      username: root
-      password: root
+#      IF below not provided take default spring.profile.active
+#      profile: dev
+#      IF below not provided take value as default
+      label: main
+      username: ${CONFIG_USER}
+      password: ${CONFIG_PASSWORD}
+server:
+  port: 9800

@@ -1,12 +1,19 @@
 spring:
   application:
     name: discover-server
-  profiles:
-    active: dev
-  config:
-    import: optional:configserver:http://localhost:9100
-    config:
-      label: main
-      name: discoveryserver
-      username: root
-      password: root
+server:
+  ssl:
+    enabled: true
+    key-store-type: PKCS12
+    key-store: classpath:JKS/discovery-server/serverkey.p12
+    key-store-password: changeit
+    protocol: TLS
+    alias: app
+    enabled-protocols: TLSv1.2
+  port: 9448
+eureka:
+  instance:
+    hostname: discovery-server
+  client:
+    register-with-eureka: false
+    fetch-registry: false
