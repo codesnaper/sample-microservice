@@ -3,7 +3,7 @@ server:
     enabled: true
     key-store-type: PKCS12
     key-store: classpath:jks/config-server/serverkey.p12
-    key-store-password: changeit
+    key-store-password: ${SSL_KEYSTORE_PASSWORD}
     protocol: TLS
     alias: app
     enabled-protocols: TLSv1.2
@@ -11,9 +11,9 @@ server:
 encrypt:
   keyStore:
     location: classpath:jks/encrypt/encryptkey.jks
-    password: changeit
+    password: ${ENCRYPT_KEYSTORE_PASSWORD}
     alias: encryptkey
-    secret: changeit
+    secret: ${ENCRYPT_KEY_PASSWORD}
 management:
   endpoints:
     web:
@@ -28,17 +28,17 @@ eureka:
 #      config server certificate
       key-store: classpath:jks/config-server/server.truststore
       key-store-type: JKS
-      key-store-password: changeit
-      key-password: changeit
+      key-store-password: ${COFIG_TRUSTSTORE_PASSWORD}
+#      key-password: changeit
 #      Discovery Server certificate
       trust-store: classpath:jks/discovery-server/server.truststore
       trust-store-type: JKS
-      trust-store-password: changeit
+      trust-store-password: ${DISCOVERY_TRUSTSTORE_PASSWORD}
     serviceUrl:
-      defaultZone: https://localhost:9448/eureka/
+      defaultZone: ${EUREKA_URL_ZONE1}
   instance:
     instanceId: ${spring.application.name}
-    hostname: config-server
+    hostname: ${HOST_NAME}
     nonSecurePortEnabled: false
     securePortEnabled: true
 spring:

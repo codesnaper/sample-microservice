@@ -1,0 +1,69 @@
+spring:
+  cloud:
+    stream:
+      function:
+        autodetect: false
+        definition: processOrder
+#      input-bindings: processOrder;addOrder
+#      output-bindings: processOrder;addOrder
+      bindings:
+        processOrder-in-0:
+          destination: order-in-topic
+          binder: kafka1
+        processOrder-out-0:
+          destination: order-out-topic
+          binder: kafka1
+        mergeOrder-in-0:
+          destination: order-in-1
+          binder: kafka1
+          producer:
+            replication-factor: 2
+            bufferSize: 16384
+            sync: true
+            messageKeyExpression: headers['orderId']
+#            topic:
+#              properties:
+            topic:
+              replication-factor: 2
+            compression:
+              type: gzip
+
+        mergeOrder-in-1:
+          destination: order-in-2
+          binder: kafka1
+          producer:
+            replication-factor: 2
+            bufferSize: 16384
+            sync: true
+            messageKeyExpression: headers['orderId']
+            #            topic:
+            #              properties:
+            topic:
+              replication-factor: 2
+            compression:
+              type: gzip
+        mergeOrder-out-0:
+          destination: order-out-topic
+          binder: kafka1
+      #        addOrder-out-0:
+#          destination: order-in-topic
+#          poller:
+#            fixedDelay: 5000
+#            maxMessagesPerPoll: 1L
+##            corn:
+#            initialDelay: 0
+#            timeUnit: MILLISECONDS
+      binders:
+        kafka1:
+          type: kafka
+#          It will inherit current configuration of application yaml and if not want to inherit and provide own use enviornment
+#          enviornment:
+#            spring:
+#              kafka:
+#                binder:
+#                  brokers: 172.30.16.1:29092,172.30.16.1:39092
+          inheritEnvironment: true
+      kafka:
+        binder:
+          brokers: 172.16.0.4:29092,172.16.0.4:39092,172.16.0.4:39095
+          autoCreateTopics: true

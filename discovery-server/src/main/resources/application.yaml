@@ -1,14 +1,22 @@
 spring:
   application:
     name: discover-server
+  ssl:
+    bundle:
+      jks:
+        server:
+          key:
+            alias: PRIVATE_KEY
+          keystore:
+            location: classpath:JKS/discovery-server/serverkey.p12
+            password: ${KEY_STORE_PASSWORD}
+            type: "PKCS12"
+
 server:
   ssl:
     enabled: true
-    key-store-type: PKCS12
-    key-store: classpath:JKS/discovery-server/serverkey.p12
-    key-store-password: changeit
+    bundle: server
     protocol: TLS
-    alias: app
     enabled-protocols: TLSv1.2
   port: 9448
 eureka:

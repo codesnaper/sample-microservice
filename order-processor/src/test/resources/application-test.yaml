@@ -1,0 +1,28 @@
+spring:
+  cloud:
+    function:
+      definition: uppercase;getName;consumer;uppercase|enrichMessagePayload;multipleInSingleOut
+      autodetect: false
+    stream:
+      bindings:
+        uppercase-in-0:
+          destination: test-in
+          binder: kafka1
+        uppercase-out-0:
+          destination: test-out
+          binder: kafka1
+        getName-out-0:
+          destination: name-test-out
+        consumer-in-0:
+          destination: consume-in-topic
+        uppercase|enrichMessagePayload-in-0:
+          destination: enrich-test-in
+        uppercase|enrichMessagePayload-out-0:
+          destination: enrich-test-out
+        multipleInSingleOut-in-0:
+          destination: test-in-1
+        multipleInSingleOut-in-1:
+          destination: test-in-2
+        multipleInSingleOut-out-0:
+          destination: test-out-1
+

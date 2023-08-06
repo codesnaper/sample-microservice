@@ -3,13 +3,14 @@ spring:
     name: auth-client
   profiles:
     active: dev
-  config:
+#  config:
 #    Removing the optional: prefix will cause the Config Client to fail if it is unable to connect to Config Server.
 #    import: optional:configserver:http://172.29.16.1:9100
-    import: configserver:http://172.29.16.1:9100
+#    import: configserver:http://172.29.16.1:9100
 #    import: ${CONFIG_SERVER_URI}
   cloud:
     config:
+      fail-fast: true
 #      IF below not provided take default spring.application.name
       name: authclient
 #      IF below not provided take default spring.profile.active
@@ -18,5 +19,6 @@ spring:
       label: main
       username: ${CONFIG_USER}
       password: ${CONFIG_PASSWORD}
-server:
-  port: 9800
+      discovery:
+        enabled: true
+        serviceId: config-server
